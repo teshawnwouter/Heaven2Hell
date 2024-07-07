@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehavour : MonoBehaviour
+public class PlayerBehavour : Characters
 {
     [Header("Movement")]
-    private float moveSpeed = 20f;
+    private float moveSpeed = 5f;
     private Rigidbody playerRb;
 
 
@@ -13,9 +13,15 @@ public class PlayerBehavour : MonoBehaviour
     private Camera cam;
     [SerializeField] LayerMask GroundMask;
 
+    protected override void Awake()
+    {
+        gameObject.tag = "Player";
 
+        base.Awake();
+    }
     void Start()
     {
+        
         cam = Camera.main;
 
         playerRb = GetComponent<Rigidbody>();
@@ -24,16 +30,17 @@ public class PlayerBehavour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerWalking();
         Aim();
     }
-    private void FixedUpdate()
+   
+
+    private void PlayerWalking()
     {
-        float movementUpAndDown = Input.GetAxis("Horizontal") * moveSpeed;
-        float movementLeftAndRight = Input.GetAxis("Vertical") * moveSpeed;
-
-        playerRb.velocity = new Vector3(movementUpAndDown,0, movementLeftAndRight);
-
-
+        float forwardAndBack = Input.GetAxis("Horizontal");
+        float LeftAndRight = Input.GetAxis("Vertical");
+        Vector3 moving = new Vector3(forwardAndBack,0,LeftAndRight);
+        transform.Translate(moving * moveSpeed * Time.deltaTime, Space.World);
     }
 
     private (bool sucess, Vector3 position) GetMouseInfo()
@@ -44,7 +51,7 @@ public class PlayerBehavour : MonoBehaviour
 
         if(Physics.Raycast(ray,out hitInfo, Mathf.Infinity, GroundMask))
         {
-            return(sucess:true, position:hitInfo.point);
+           return(sucess:true, position:hitInfo.point);
 
         }
         else
@@ -52,7 +59,7 @@ public class PlayerBehavour : MonoBehaviour
             return (sucess: false, position: Vector3.zero);
         }
     }
-    
+
 
     private void Aim()
     {
@@ -61,9 +68,9 @@ public class PlayerBehavour : MonoBehaviour
         {
             var direction = position - transform.position;
 
-            direction.y = 0;
+           direction.y = 0;
 
             transform.forward = direction;
-        }
+       }
     }
 }

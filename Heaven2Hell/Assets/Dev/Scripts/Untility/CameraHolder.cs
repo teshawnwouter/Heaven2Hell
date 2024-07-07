@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class CameraHolder : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Transform targert;
+    private GameObject player;
+    [SerializeField] private Vector3 offSet;
+
+    private float followSpeed;
+
     void Start()
     {
-        
-    }
+        player = GameObject.FindWithTag("Player");
 
-    // Update is called once per frame
+        if (player.CompareTag("Player"))
+        {
+           targert = player.GetComponent<Transform>();
+        }
+        followSpeed = 10f;
+    }
     void Update()
     {
-        
+        FollowPlayer();
     }
+    private void FollowPlayer()
+    {
+        if (targert != null)
+        {
+            transform.position = Vector3.Lerp(transform.position, targert.position + offSet, followSpeed * Time.deltaTime);
+
+        }
+        else
+        {
+            return;
+        }
+    }
+
 }

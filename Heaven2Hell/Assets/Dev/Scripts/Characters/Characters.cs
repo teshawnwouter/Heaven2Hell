@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Characters : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public CharacterStats stats;
+   
+   protected virtual void Awake()
+   {
+
+       
+       
+   }
+    
+    protected virtual void TakeDamage( int playerHealthPoints)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+
+    protected virtual void DoDamager()
     {
-        
+
     }
 }
