@@ -5,7 +5,6 @@ using UnityEngine.TextCore.Text;
 
 public class EnemyBehavour : Characters
 {
-    [SerializeField] private int _health;
     protected override void Awake()
     {
         base.Awake();
@@ -14,7 +13,6 @@ public class EnemyBehavour : Characters
     // Start is called before the first frame update
     void Start()
     {
-        
        
     }
 

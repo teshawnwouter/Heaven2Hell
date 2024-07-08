@@ -368,7 +368,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: a8dc96186bafa5345a2b7339d7a1dbba, type: 2}
+  _armor: 0
   _health: 0
+  _attack: 0
+  _speed: 0
 --- !u!65 &1181906566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -605,6 +608,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31a1105b2900324a858ce6f65f3302d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 663690be3f7e50049b30c6165b667d2a, type: 2}
+  _armor: 0
+  _health: 0
+  _attack: 0
+  _speed: 0
   GroundMask:
     serializedVersion: 2
     m_Bits: 64

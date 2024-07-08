@@ -10,31 +10,11 @@ public class CharacterStats : ScriptableObject
 {
     //public Dictionary<CharacterStats, float> stats = new Dictionary<CharacterStats, float>();
 
-    [SerializeField] private int health =  200;
-    [SerializeField]private int armor = 50;
-    [SerializeField] private int damage = 20;
-    [SerializeField] private int movespeed = 5;
-
-    private int activeHealth;
+    public  int health ;
+    public int armor;
+    public int damage;
+    public int movespeed;
         
     [System.NonSerialized] public UnityAction<int> healthChanged;
-
-
-    public int Health { 
-        get { return activeHealth; } 
-        set {  if(value != activeHealth)
-            {
-                activeHealth = Mathf.Max(value, 0);
-                healthChanged?.Invoke(activeHealth);
-            }
-        }
-    }
-
-
-
-    public void InitDefaulds()
-    {
-        Health = health;
-    }
    
 }
