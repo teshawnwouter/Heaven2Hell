@@ -15,4 +15,4 @@ MonoBehaviour:
   health: 500
   armor: 50
   damage: 20
-  movespeed: 5
+  movespeed: 3

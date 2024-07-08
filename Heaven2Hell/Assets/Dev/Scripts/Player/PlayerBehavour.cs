@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerBehavour : Characters
 {
     [Header("Movement")]
-    private float moveSpeed = 5f;
     private Rigidbody playerRb;
 
 
@@ -13,6 +12,7 @@ public class PlayerBehavour : Characters
     private Camera cam;
     [SerializeField] LayerMask GroundMask;
 
+    private LevelSystem levelSystem;
     protected override void Awake()
     {
         gameObject.tag = "Player";
@@ -25,6 +25,8 @@ public class PlayerBehavour : Characters
         cam = Camera.main;
 
         playerRb = GetComponent<Rigidbody>();
+
+       
     }
 
     // Update is called once per frame
@@ -32,6 +34,11 @@ public class PlayerBehavour : Characters
     {
         PlayerWalking();
         Aim();
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("gained XP");
+            levelSystem.GainExperience(10);
+        }
     }
    
 
@@ -40,7 +47,7 @@ public class PlayerBehavour : Characters
         float forwardAndBack = Input.GetAxis("Horizontal");
         float LeftAndRight = Input.GetAxis("Vertical");
         Vector3 moving = new Vector3(forwardAndBack,0,LeftAndRight);
-        transform.Translate(moving * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(moving * _speed * Time.deltaTime, Space.World);
     }
 
     private (bool sucess, Vector3 position) GetMouseInfo()
@@ -72,5 +79,20 @@ public class PlayerBehavour : Characters
 
             transform.forward = direction;
        }
+    }
+
+
+    public void SetLevelSystem(LevelSystem levelSystem)
+    {
+        this.levelSystem = levelSystem;
+        levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged;
+    }
+
+    private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
+    {
+        _armor += 100;
+        _attack += 100;
+        _health += 100;
+        _speed += 2;
     }
 }
