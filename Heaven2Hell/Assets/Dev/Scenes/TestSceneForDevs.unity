@@ -414,9 +414,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: a8dc96186bafa5345a2b7339d7a1dbba, type: 2}
   _armor: 0
-  _health: 0
+  _health: 10
   _attack: 0
   _speed: 0
+  _experienceGiven: 0
+  _experience: 0
+  _level: 0
+  playerSO: {fileID: 11400000, guid: 663690be3f7e50049b30c6165b667d2a, type: 2}
 --- !u!65 &1181906566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -658,9 +662,13 @@ MonoBehaviour:
   _health: 0
   _attack: 0
   _speed: 0
+  _experienceGiven: 0
+  _experience: 0
+  _level: 0
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
+  enemyBehavour: {fileID: 1181906565}
 --- !u!1 &1823872885
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,10 +10,16 @@ public class CharacterStats : ScriptableObject
 {
     //public Dictionary<CharacterStats, float> stats = new Dictionary<CharacterStats, float>();
 
+    [Header("Stats")]
     public  int health ;
     public int armor;
     public int damage;
     public int movespeed;
+
+    [Header("XP")]
+    public int experienceGiven;
+    public int experience;
+    public int level;
         
     [System.NonSerialized] public UnityAction<int> healthChanged;
    

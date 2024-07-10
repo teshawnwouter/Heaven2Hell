@@ -13,6 +13,9 @@ public class PlayerBehavour : Characters
     [SerializeField] LayerMask GroundMask;
 
     private LevelSystem levelSystem;
+
+    public EnemyBehavour enemyBehavour;
+
     protected override void Awake()
     {
         gameObject.tag = "Player";
@@ -38,6 +41,17 @@ public class PlayerBehavour : Characters
         {
             Debug.Log("gained XP");
             levelSystem.GainExperience(10);
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            enemyBehavour.TakeDamage(10);
+            Debug.Log(enemyBehavour._health);
+        }
+
+        if(stats.experience != _experience)
+        {
+            _experience = stats.experience;
         }
     }
    

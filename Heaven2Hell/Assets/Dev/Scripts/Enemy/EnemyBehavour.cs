@@ -5,20 +5,31 @@ using UnityEngine.TextCore.Text;
 
 public class EnemyBehavour : Characters
 {
+
+    //public  CharacterStats playerSO;
     protected override void Awake()
     {
         base.Awake();
         gameObject.tag = "Enemy";
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
        
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    //private void OnDestroy()
+    //{
+    //    playerSO.experience += _experienceGiven;
+        
+
+    //}
+
+
+
 }

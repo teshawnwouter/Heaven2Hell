@@ -16,3 +16,6 @@ MonoBehaviour:
   armor: 50
   damage: 20
   movespeed: 5
+  experienceGiven: 10
+  experience: 0
+  level: 1
