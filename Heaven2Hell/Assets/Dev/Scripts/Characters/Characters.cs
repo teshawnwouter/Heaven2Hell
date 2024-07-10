@@ -6,10 +6,7 @@ using UnityEngine;
 
 public class Characters : MonoBehaviour
 {
-    
-    
     public CharacterStats stats;
-    public CharacterStats playerSO;
 
     [Header("stats")]
     public int _armor;
@@ -32,16 +29,15 @@ public class Characters : MonoBehaviour
         _level = stats.level;
    }
     
-   public virtual void TakeDamage( int playerHealthPoints)
-    {
-        if(_health > 0 )
-        {
-            _health -= playerHealthPoints;
-        }
-        else
-        {
-            Destroy(gameObject);
-            playerSO.experience += _experience;
-        }
-    }
+    //public virtual void TakeDamage(int playerHealthPoints)
+    //{
+    //    if(_health > 0 )
+    //    {
+    //        _health -= playerHealthPoints;
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

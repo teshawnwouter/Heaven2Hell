@@ -6,7 +6,7 @@ using UnityEngine.TextCore.Text;
 public class EnemyBehavour : Characters
 {
 
-    //public  CharacterStats playerSO;
+    public  CharacterStats playerSO;
     protected override void Awake()
     {
         base.Awake();
@@ -22,13 +22,21 @@ public class EnemyBehavour : Characters
     {
         
     }
-
-    //private void OnDestroy()
-    //{
-    //    playerSO.experience += _experienceGiven;
-        
-
-    //}
+    public void TakeDamage(int playerHealthPoints)
+    {
+        if (_health > 0)
+        {
+            _health -= playerHealthPoints;
+        }
+        else
+        {
+            if(gameObject!=null)
+            {
+                playerSO.experience += _experienceGiven;
+                Destroy(gameObject);
+            }
+        }
+    }
 
 
 

@@ -45,7 +45,7 @@ public class PlayerBehavour : Characters
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            enemyBehavour.TakeDamage(10);
+            enemyBehavour.TakeDamage(50);
             Debug.Log(enemyBehavour._health);
         }
 
