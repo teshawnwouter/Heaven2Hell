@@ -7,9 +7,7 @@ using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "UnitStats")]
 public class CharacterStats : ScriptableObject
-{
-    //public Dictionary<CharacterStats, float> stats = new Dictionary<CharacterStats, float>();
-
+{ 
     [Header("Stats")]
     public  int health ;
     public int armor;

@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class Bullet : BulletBase  
 {
+    EnemyBehavour enemyBehavour;
     private Rigidbody rb;
 
-    void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
+        enemyBehavour = GetComponent<EnemyBehavour>();
         rb.velocity = transform.forward * BulletSpeed;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, BulletDuration);
     }
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("testig");
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("testig");
+            enemyBehavour.GetComponent<EnemyBehavour>().TakeDamage(10);
+            //figure out why the damage script from the enemy is not working for the bullet
+        }
         Destroy(gameObject);
     }
 }

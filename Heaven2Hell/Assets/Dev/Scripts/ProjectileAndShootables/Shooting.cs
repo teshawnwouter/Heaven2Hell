@@ -28,7 +28,7 @@ public class Shooting : MonoBehaviour
 
         normObj.GetComponent<Bullet>().BulletSpeed = proSpeed;
         spreadObj.GetComponent<Bullet>().BulletSpeed = proSpeed;
-        explosiveObj.GetComponent<Bullet>().BulletSpeed = proSpeed;
+        explosiveObj.GetComponent<Explosion>().BulletSpeed = proSpeed;
         multiShot.GetComponent<Bullet>().BulletSpeed = proSpeed;
 
 
@@ -51,19 +51,27 @@ public class Shooting : MonoBehaviour
             spreadObj.GetComponent<Bullet>().BulletSpeed = proSpeed - 3;
             Projectile(spreadObj, bulletSpread, true);
             spreadObj.GetComponent<Bullet>().BulletSpeed = proSpeed;
+            //50spread is the max spread we can use
+            //make more spread and more bullets per spread
+
         }
         else if (bulletType == BulletType.explosive && readyToFire == true)
         {
-
+            Projectile(explosiveObj, 0f, true);
         }
         else if (bulletType == BulletType.zone && readyToFire == true)
         {
-
+            
         }
         else if (bulletType == BulletType.multiShot && readyToFire == true)
         {
-            multiAttack(multiShot,0f,true);
-        }
+            Projectile(multiShot,180f,true);
+            Projectile(multiShot,0f,true);
+            Projectile(multiShot, 90, true);
+            Projectile(multiShot,270,true);
+
+        //calculate how to make more angels and more projetiles
+        }   
 
     }
 
@@ -82,25 +90,11 @@ public class Shooting : MonoBehaviour
 
 
     }
-
-
     public void ZoneControle()
     {
-
-    }
-
-    public void multiAttack(GameObject obj, float rotate, bool reset)
-    {
-        readyToFire = false;
-        firePoint.Rotate(0f, rotate, 0f);
-        GameObject projectile = Instantiate(obj, firePoint.position, firePoint.rotation);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        Vector3 forceDirection = firePoint.transform.forward;
-        firePoint.Rotate(0f, -rotate, 0f);
-        if (reset)
-            Invoke(nameof(ResetShot), fireDelay);
-
-
+        //make a zone around your mouse posisiton
+        //let it do damager by creating a zone and destroying it 
+        // call the damage function
     }
 
     private void ResetShot()

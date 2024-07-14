@@ -7,11 +7,15 @@ using UnityEngine;
 public enum BulletType { normal, explosive, zone, spreads , multiShot}
 public class BulletBase : MonoBehaviour
 {
-    public float explotionRadios;
+    protected float explotionRadios = 10f;
 
 
     public float BulletSpeed;
-    public float BulletDuration = 5;
+
+    protected float BulletDamage;
+
+
+    protected float BulletDuration = .5f;
 
 
 

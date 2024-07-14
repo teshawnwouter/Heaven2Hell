@@ -456,7 +456,7 @@ Transform:
   m_GameObject: {fileID: 1181906564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: 0, z: 5.7}
+  m_LocalPosition: {x: 3.3, y: 0.601, z: 5.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -593,11 +593,10 @@ Transform:
   m_GameObject: {fileID: 1247781290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.364, z: 0}
+  m_LocalPosition: {x: 0, y: 1.022, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2020726066}
   - {fileID: 1839884669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -641,9 +640,9 @@ MonoBehaviour:
   proSpeed: 50
   normObj: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
   spreadObj: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
-  explosiveObj: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
+  explosiveObj: {fileID: 5231616831011905314, guid: 145e746847132f5429f797d9d068cfd7, type: 3}
   multiShot: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
-  firePoint: {fileID: 2020726066}
+  firePoint: {fileID: 1247781295}
   bulletSpread: 3
   fireDelay: 1
 --- !u!1 &1823872885
@@ -845,37 +844,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839884668}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2020726065
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2020726066}
-  m_Layer: 8
-  m_Name: AimPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2020726066
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020726065}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.85}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1247781295}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

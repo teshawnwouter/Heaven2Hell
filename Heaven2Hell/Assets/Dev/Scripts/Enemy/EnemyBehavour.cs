@@ -22,11 +22,11 @@ public class EnemyBehavour : Characters
     {
         
     }
-    public void TakeDamage(int playerHealthPoints)
+    public void TakeDamage(int CharacterHealthPoints)
     {
         if (_health > 0)
         {
-            _health -= playerHealthPoints;
+            _health -= CharacterHealthPoints;
         }
         else
         {
