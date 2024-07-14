@@ -229,51 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targert: {fileID: 0}
   offSet: {x: 0, y: 6, z: -3}
---- !u!1 &842568554
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 842568556}
-  - component: {fileID: 842568555}
-  m_Layer: 0
-  m_Name: testing
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &842568555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842568554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2732d6b1b7fbb41b08998d6f266d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1247781296}
---- !u!4 &842568556
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842568554}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &844955098
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +476,8 @@ GameObject:
   - component: {fileID: 1247781292}
   - component: {fileID: 1247781291}
   - component: {fileID: 1247781296}
-  m_Layer: 0
+  - component: {fileID: 1247781297}
+  m_Layer: 8
   m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,6 +625,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   enemyBehavour: {fileID: 1181906565}
+--- !u!114 &1247781297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247781290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2097c64d2c90a484a9aba199cc4f3b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletType: 4
+  proSpeed: 50
+  normObj: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
+  spreadObj: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
+  explosiveObj: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
+  multiShot: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
+  firePoint: {fileID: 2020726066}
+  bulletSpread: 3
+  fireDelay: 1
 --- !u!1 &1823872885
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +752,7 @@ GameObject:
   - component: {fileID: 1839884672}
   - component: {fileID: 1839884671}
   - component: {fileID: 1839884670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: testCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -877,7 +854,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2020726066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AimPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,7 +870,7 @@ Transform:
   m_GameObject: {fileID: 2020726065}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -908,4 +885,3 @@ SceneRoots:
   - {fileID: 844955102}
   - {fileID: 1247781295}
   - {fileID: 1181906569}
-  - {fileID: 842568556}

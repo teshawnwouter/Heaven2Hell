@@ -28,16 +28,4 @@ public class Characters : MonoBehaviour
         _experienceGiven = stats.experienceGiven;
         _level = stats.level;
    }
-    
-    //public virtual void TakeDamage(int playerHealthPoints)
-    //{
-    //    if(_health > 0 )
-    //    {
-    //        _health -= playerHealthPoints;
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
 }

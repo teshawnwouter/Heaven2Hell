@@ -12,7 +12,7 @@ public class PlayerBehavour : Characters
     private Camera cam;
     [SerializeField] LayerMask GroundMask;
 
-    private LevelSystem levelSystem;
+    
 
     public EnemyBehavour enemyBehavour;
 
@@ -31,18 +31,11 @@ public class PlayerBehavour : Characters
 
        
     }
-
-    // Update is called once per frame
     void Update()
     {
         PlayerWalking();
         Aim();
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Debug.Log("gained XP");
-            levelSystem.GainExperience(10);
-        }
-
+      
         if(Input.GetKeyDown(KeyCode.R))
         {
             enemyBehavour.TakeDamage(50);
@@ -93,20 +86,5 @@ public class PlayerBehavour : Characters
 
             transform.forward = direction;
        }
-    }
-
-
-    public void SetLevelSystem(LevelSystem levelSystem)
-    {
-        this.levelSystem = levelSystem;
-        levelSystem.OnLevelChanged += LevelSystem_OnLevelChanged;
-    }
-
-    private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e)
-    {
-        _armor += 100;
-        _attack += 100;
-        _health += 100;
-        _speed += 2;
     }
 }
