@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 
 public class Shooting : MonoBehaviour
 {
@@ -7,8 +8,12 @@ public class Shooting : MonoBehaviour
     BulletType bulletType;
     public float proSpeed = 50f;
 
-    public GameObject normObj, spreadObj, explosiveObj, multiShot;
+    Camera cam;
 
+    public float damageZoneRadius = 6f;
+
+    public GameObject normObj, spreadObj, explosiveObj, multiShot, ZoneObj;
+   
 
 
    [SerializeField]private Transform firePoint;
@@ -24,15 +29,14 @@ public class Shooting : MonoBehaviour
 
     void Start()
     {
+        cam = Camera.main;
+
         bulletType = BulletType.normal;
 
         normObj.GetComponent<Bullet>().BulletSpeed = proSpeed;
         spreadObj.GetComponent<Bullet>().BulletSpeed = proSpeed;
         explosiveObj.GetComponent<Explosion>().BulletSpeed = proSpeed;
         multiShot.GetComponent<Bullet>().BulletSpeed = proSpeed;
-
-
-       
     }
 
 
@@ -61,7 +65,7 @@ public class Shooting : MonoBehaviour
         }
         else if (bulletType == BulletType.zone && readyToFire == true)
         {
-            
+           ZoneControle(ZoneObj,true);   
         }
         else if (bulletType == BulletType.multiShot && readyToFire == true)
         {
@@ -87,11 +91,37 @@ public class Shooting : MonoBehaviour
         firePoint.Rotate(0f, -rotate, 0f);
         if (reset)
             Invoke(nameof(ResetShot), fireDelay);
-
-
     }
-    public void ZoneControle()
+
+    public void ZoneControle(GameObject obj , bool reset)
     {
+        readyToFire = false;
+
+
+        var (sucess, position) = GetComponent<PlayerBehavour>().GetMouseInfo();
+
+
+        if (sucess)
+        {
+            var direction = position - transform.position;
+            direction.y = 0f;
+
+            GameObject damagerZone = Instantiate(ZoneObj, direction, transform.rotation);
+            Destroy(damagerZone, .5f);
+
+            Collider[] PainZone = Physics.OverlapSphere(direction, damageZoneRadius);
+            foreach (var c in PainZone)
+            {
+                EnemyBehavour enemyBehavour = c.GetComponent<EnemyBehavour>();
+                if (enemyBehavour != null)
+                {
+                    enemyBehavour.GetComponent<EnemyBehavour>().TakeDamage(20);
+                    //Take damage
+                }
+            }
+        }
+        if (reset)
+            Invoke(nameof(ResetShot), fireDelay);
         //make a zone around your mouse posisiton
         //let it do damager by creating a zone and destroying it 
         // call the damage function

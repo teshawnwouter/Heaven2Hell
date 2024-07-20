@@ -57,7 +57,7 @@ public class PlayerBehavour : Characters
         transform.Translate(moving * _speed * Time.deltaTime, Space.World);
     }
 
-    private (bool sucess, Vector3 position) GetMouseInfo()
+    public (bool sucess, Vector3 position) GetMouseInfo()
     {
         var ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;

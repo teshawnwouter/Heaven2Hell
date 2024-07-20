@@ -638,10 +638,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletType: 4
   proSpeed: 50
+  damageZoneRadius: 6
   normObj: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
   spreadObj: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
   explosiveObj: {fileID: 5231616831011905314, guid: 145e746847132f5429f797d9d068cfd7, type: 3}
   multiShot: {fileID: 4676098695763479437, guid: c54c4ac5de903c34694fd720352a4558, type: 3}
+  ZoneObj: {fileID: 2024409139592480901, guid: 99d7ad5022f5b3749b0806cb806a3e6c, type: 3}
   firePoint: {fileID: 1247781295}
   bulletSpread: 3
   fireDelay: 1
