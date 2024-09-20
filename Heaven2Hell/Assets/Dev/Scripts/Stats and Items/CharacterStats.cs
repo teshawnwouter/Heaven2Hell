@@ -19,6 +19,5 @@ public class CharacterStats : ScriptableObject
     public int experience;
     public int level;
         
-    [System.NonSerialized] public UnityAction<int> healthChanged;
-   
+    [HideInInspector] public UnityAction<int> healthChanged;
 }

@@ -13,7 +13,6 @@ public class CanUseSkill : MonoBehaviour
     {
         skilltree = new UnlockSkills();
         skilltree.onSkillUnlock += Skilltree_onSkillUnlock;
-       
     }
 
     private void Skilltree_onSkillUnlock(object sender, OnSkillUnluckEventArges e)

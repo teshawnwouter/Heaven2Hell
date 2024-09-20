@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnlockSkills 
@@ -22,17 +23,19 @@ public class UnlockSkills
         fireBall,
         crit
     }
-    private List<Skills> M_Skills;
+    public List<Skills> M_Skills;
 
     public UnlockSkills()
     {
         M_Skills = new List<Skills>();
     }
+    
     private void UnlockSkill(Skills skill)
     {
         if (!IsUnlocked(skill))
         {
             M_Skills.Add(skill);
+            Debug.Log(skill.ToString());
             onSkillUnlock?.Invoke(this, new OnSkillUnluckEventArges{ SkillType = skill});
         }
         

@@ -1,26 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnlockSkills;
 
 public class UISkilltree : MonoBehaviour
 {
 
     [SerializeField] private UnlockSkills unlockSkill;
     [SerializeField] private CanUseSkill canUseSkill;
+
+    [SerializeField] private GameObject atkUI;
+    [SerializeField] private GameObject defUI;
     [SerializeField] private GameObject critUI;
     [SerializeField] private GameObject speedUI;
     [SerializeField] private GameObject fireBallUI;
     [SerializeField] private GameObject iceBlastUI;
 
+
+    List<GameObject> skillButtons = new List<GameObject>();
+
     private void Awake()
     {
-
+        
     }
     public void SetPlayerSkills(UnlockSkills unlockSkills)
     {
         this.unlockSkill = unlockSkills;
         unlockSkills.onSkillUnlock += UnlockSkills_onSkillUnlock;
         UpdateVisuals();
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void UnlockSkills_onSkillUnlock(object sender, UnlockSkills.OnSkillUnluckEventArges e)
@@ -30,13 +42,13 @@ public class UISkilltree : MonoBehaviour
 
     public void UnlockAttack()
     {
-
         if (!unlockSkill.TryToUnlock(UnlockSkills.Skills.attack))
         {
             Debug.Log("can't Unlock skill");
         }
         else
         {
+            
             Debug.Log("unlocked Attack");
         }
     }
@@ -49,7 +61,6 @@ public class UISkilltree : MonoBehaviour
         }
         else
         {
-
             Debug.Log("unlocked defence");
         }
     }
@@ -63,7 +74,6 @@ public class UISkilltree : MonoBehaviour
         }
         else
         {
-
             Debug.Log("unlocked Crit");
         }
     }
@@ -76,7 +86,6 @@ public class UISkilltree : MonoBehaviour
         }
         else
         {
-         
             Debug.Log("unlocked Speed");
         }
     }
@@ -89,7 +98,6 @@ public class UISkilltree : MonoBehaviour
         }
         else
         {
-
             Debug.Log("unlocked FireBall");
         }
     }
@@ -102,67 +110,54 @@ public class UISkilltree : MonoBehaviour
         }
         else
         {
-
             Debug.Log("unlocked iceBlast");
         }
     }
 
     private void UpdateVisuals()
     {
-        if (unlockSkill.IsUnlocked(UnlockSkills.Skills.crit))
+
+
+
+        if (unlockSkill.IsUnlocked(UnlockSkills.Skills.attack))
         {
-            critUI.SetActive(false);
+            critUI.SetActive(true);
+            Debug.Log(unlockSkill.IsUnlocked(UnlockSkills.Skills.attack));
         }
         else
         {
-            if (unlockSkill.CanUnlock(UnlockSkills.Skills.crit))
+            if (unlockSkill.IsUnlocked(UnlockSkills.Skills.crit))
             {
-                Debug.Log("stop Test");
+                
                 critUI.SetActive(true);
             }
-            else
-            {
-                Debug.Log("test");
-                critUI.SetActive(false);
-            }
+           
         }
-
 
         if (unlockSkill.IsUnlocked(UnlockSkills.Skills.speed))
         {
-            speedUI.SetActive(false);
+            speedUI.SetActive(true);
         }
         else
         {
             if (unlockSkill.CanUnlock(UnlockSkills.Skills.speed))
             {
-                Debug.Log("stop Test");
                 speedUI.SetActive(true);
             }
-            else
-            {
-                Debug.Log("test");
-                speedUI.SetActive(false);
-            }
-
+            
 
 
             if (unlockSkill.IsUnlocked(UnlockSkills.Skills.fireBall))
             {
-                fireBallUI.SetActive(false);
+                fireBallUI.SetActive(true);
             }
             else
             {
                 if (unlockSkill.CanUnlock(UnlockSkills.Skills.fireBall))
                 {
-                    Debug.Log("stop Test");
                     fireBallUI.SetActive(true);
                 }
-                else
-                {
-                    Debug.Log("test");
-                    fireBallUI.SetActive(false);
-                }
+               
             }
 
 
@@ -170,19 +165,13 @@ public class UISkilltree : MonoBehaviour
 
             if (unlockSkill.IsUnlocked(UnlockSkills.Skills.iceBlast))
             {
-                iceBlastUI.SetActive(false);
+                iceBlastUI.SetActive(true);
             }
             else
             {
                 if (unlockSkill.CanUnlock(UnlockSkills.Skills.iceBlast))
                 {
-                    Debug.Log("stop Test");
                     iceBlastUI.SetActive(true);
-                }
-                else
-                {
-                    Debug.Log("test");
-                    iceBlastUI.SetActive(false);
                 }
             }
         }
