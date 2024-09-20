@@ -12,7 +12,7 @@ public class UISkilltree : MonoBehaviour
     [SerializeField] private GameObject atkUI;
     [SerializeField] private GameObject defUI;
     [SerializeField] private GameObject critUI;
-    [SerializeField] private GameObject speedUI;
+    [SerializeField] private GameObject frostShieldUI;
     [SerializeField] private GameObject fireBallUI;
     [SerializeField] private GameObject iceBlastUI;
 
@@ -28,11 +28,6 @@ public class UISkilltree : MonoBehaviour
         this.unlockSkill = unlockSkills;
         unlockSkills.onSkillUnlock += UnlockSkills_onSkillUnlock;
         UpdateVisuals();
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void UnlockSkills_onSkillUnlock(object sender, UnlockSkills.OnSkillUnluckEventArges e)
@@ -77,18 +72,7 @@ public class UISkilltree : MonoBehaviour
             Debug.Log("unlocked Crit");
         }
     }
-    public void UnlockSpeed()
-    {
-        if (!unlockSkill.TryToUnlock(UnlockSkills.Skills.speed))
-        {
-            Debug.Log("can't Unlock skill");
-
-        }
-        else
-        {
-            Debug.Log("unlocked Speed");
-        }
-    }
+   
     public void UnlockFireBall()
     {
         if (!unlockSkill.TryToUnlock(UnlockSkills.Skills.fireBall))
@@ -112,6 +96,17 @@ public class UISkilltree : MonoBehaviour
         {
             Debug.Log("unlocked iceBlast");
         }
+    } public void UnlockFrostSHield()
+    {
+        if (!unlockSkill.TryToUnlock(UnlockSkills.Skills.frostShield))
+        {
+            Debug.Log("can't Unlock skill");
+
+        }
+        else
+        {
+            Debug.Log("unlocked iceBlast");
+        }
     }
 
     private void UpdateVisuals()
@@ -122,7 +117,7 @@ public class UISkilltree : MonoBehaviour
         if (unlockSkill.IsUnlocked(UnlockSkills.Skills.attack))
         {
             critUI.SetActive(true);
-            Debug.Log(unlockSkill.IsUnlocked(UnlockSkills.Skills.attack));
+           
         }
         else
         {
@@ -132,19 +127,7 @@ public class UISkilltree : MonoBehaviour
                 critUI.SetActive(true);
             }
            
-        }
-
-        if (unlockSkill.IsUnlocked(UnlockSkills.Skills.speed))
-        {
-            speedUI.SetActive(true);
-        }
-        else
-        {
-            if (unlockSkill.CanUnlock(UnlockSkills.Skills.speed))
-            {
-                speedUI.SetActive(true);
-            }
-            
+        }   
 
 
             if (unlockSkill.IsUnlocked(UnlockSkills.Skills.fireBall))
@@ -173,7 +156,32 @@ public class UISkilltree : MonoBehaviour
                 {
                     iceBlastUI.SetActive(true);
                 }
+            } 
+
+            if (unlockSkill.IsUnlocked(UnlockSkills.Skills.defence))
+            {
+                defUI.SetActive(true);
             }
-        }
+            else
+            {
+                if (unlockSkill.CanUnlock(UnlockSkills.Skills.defence))
+                {
+                    defUI.SetActive(true);
+                }
+            } 
+
+
+            if (unlockSkill.IsUnlocked(UnlockSkills.Skills.frostShield))
+            {
+                frostShieldUI.SetActive(true);
+            }
+            else
+            {
+                if (unlockSkill.CanUnlock(UnlockSkills.Skills.frostShield))
+                {
+                    frostShieldUI.SetActive(true);
+                }
+            }
+        
     }
 }

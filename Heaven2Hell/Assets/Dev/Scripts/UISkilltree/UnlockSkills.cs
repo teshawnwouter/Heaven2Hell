@@ -18,10 +18,10 @@ public class UnlockSkills
         None,
         attack,
         defence,
-        speed,
         iceBlast,
         fireBall,
-        crit
+        crit,
+        frostShield
     }
     public List<Skills> M_Skills;
 
@@ -35,7 +35,6 @@ public class UnlockSkills
         if (!IsUnlocked(skill))
         {
             M_Skills.Add(skill);
-            Debug.Log(skill.ToString());
             onSkillUnlock?.Invoke(this, new OnSkillUnluckEventArges{ SkillType = skill});
         }
         
@@ -52,8 +51,9 @@ public class UnlockSkills
         {
             case Skills.crit: return Skills.attack;
             case Skills.fireBall: return Skills.crit;
-            case Skills.speed: return Skills.defence;
-            case Skills.iceBlast: return Skills.speed;
+            case Skills.iceBlast: return Skills.fireBall;
+            case Skills.defence: return Skills.iceBlast;
+            case Skills.frostShield: return Skills.defence;
         }
         return Skills.None;
     }

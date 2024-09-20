@@ -7,7 +7,10 @@ public class CanUseSkill : MonoBehaviour
 {
     private UnlockSkills skilltree;
 
-
+    private void Update()
+    {
+       
+    }
 
     public void Awake()
     {
@@ -25,9 +28,6 @@ public class CanUseSkill : MonoBehaviour
             case UnlockSkills.Skills.defence:
                 CanUseDefenseBuff();
                 break;
-            case UnlockSkills.Skills.speed:
-                CanUseSpeedBuff();
-                break;
             case UnlockSkills.Skills.crit:
                 CanUseHeavyCritsBuff();
                 break;
@@ -36,6 +36,9 @@ public class CanUseSkill : MonoBehaviour
                 break;
             case UnlockSkills.Skills.iceBlast:
                 CanUseIceBlastBuff();
+                break;
+            case UnlockSkills.Skills.frostShield:
+                CanUseFrostShield();
                 break;
 
         }
@@ -56,7 +59,7 @@ public class CanUseSkill : MonoBehaviour
 
     public bool CanUseDefenseBuff() { return skilltree.IsUnlocked(UnlockSkills.Skills.defence); }
 
-    public bool CanUseSpeedBuff() { return skilltree.IsUnlocked(UnlockSkills.Skills.speed); }
+    public bool CanUseFrostShield() { return skilltree.IsUnlocked(UnlockSkills.Skills.frostShield); }
 
     public bool CanUseFireBallBuff() { return skilltree.IsUnlocked(UnlockSkills.Skills.fireBall); }
 
